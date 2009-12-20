@@ -1,0 +1,1 @@
+-record(process_pool, {total_count, busy_count, process_table_id}).
