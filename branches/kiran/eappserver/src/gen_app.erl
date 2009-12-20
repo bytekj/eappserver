@@ -53,6 +53,8 @@ handle_sync_request(AppId, Request) ->
 	{ok, Response} = gen_server:handle_call(AppId, {app_req, Request}).
 
 %% Funtion: handle_cast/2
+%% Desciption: handle cast messages to gen_app process
+%% Return: {noreply, #state{}}
 handle_cast({app_req, Request}, State = #state{app_name=AppName, app_state=AppState}) ->
 	{ok, NewAppState, Response}=AppName:handle_request(Request, AppState),
 	client:respond(Response).
